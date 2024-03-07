@@ -1,0 +1,25 @@
+name: COMPOSER TEST
+
+on:
+  push:
+    branches: [main, DEV]
+  pull_request:
+    branches: [main, DEV]
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: setup compose
+        uses: php-actions/composer@v6
+        with:    
+          run: composer install
+
+      - name: UNIT TEST
+        run: composer test tests
+
+      - name: run  lint
+        run: composer lint src
