@@ -1,0 +1,42 @@
+name: Go
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      composer: 2.7.1
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: php-actions/composer@v6
+
+    - name: Set up Composer ${{ env.composer}}
+      uses: php-actions/composer@v64
+      with:
+        composer-version: ${{ env.composer }}
+
+
+    - name: Install dependencies
+      uses: php-actions/composer@v6
+      with:
+        command: composer install
+
+    - name: Test
+      uses: php-actions/composer@v6
+      with: 
+        command: composer test 
+
+
+    - name: PHP Syntax Checker (Lint)
+      uses: StephaneBour/actions-php-lint@8.2
+      with:
+        dir: '../../src'
+   
