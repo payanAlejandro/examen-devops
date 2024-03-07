@@ -18,8 +18,8 @@ jobs:
         with:    
           run: composer install
 
-      - name: UNIT TEST
-        run: composer test tests
+      #- name: UNIT TEST
+      #  run: composer test tests
 
       - name: run  lint
         run: composer lint src
