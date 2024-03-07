@@ -7,15 +7,17 @@ on:
     branches: [ main, DEV ]
 
 jobs:
-  build:
+  testing:
     runs-on: ubuntu-latest
 
     steps:
+      
+    - name: checkout repo
+    - uses: actions/checkout@v3
+
     - uses: actions/checkout@v3
     - uses: php-actions/composer@v6
 
-    - name: checkout repo
-    - uses: actions/checkout@v3
 
     - name: setup composer
     - uses: php-actions/composer@v6
@@ -24,7 +26,6 @@ jobs:
 
     - name: Test
       run: composer test tests
-
 
     - name: PHP Syntax Checker (Lint)
       run: composer lint src
