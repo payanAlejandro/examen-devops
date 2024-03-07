@@ -2,9 +2,9 @@ name: Composer
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, DEV ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, DEV ]
 
 jobs:
   build:
