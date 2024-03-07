@@ -16,17 +16,11 @@ jobs:
 
 
     - name: Install dependencies
-      uses: php-actions/composer@v6
-      with:
-        command: composer install 
+      run: composer install
 
     - name: Test
-      uses: php-actions/composer@v6
-      with: 
-        command: composer/test test 
+      run: composer test tests
 
-    - name: Lint
-      uses: php-actions/composer@v6
-      with: 
-        command: composer lint/src 
-
+    - name: PHP Syntax Checker (Lint)
+      run: composer lint src
+      
