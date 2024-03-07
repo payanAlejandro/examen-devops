@@ -23,10 +23,10 @@ jobs:
     - name: Test
       uses: php-actions/composer@v6
       with: 
-        command: composer test 
+        command: composer/test test 
 
-    - name: PHP Syntax Checker (Lint)
-      uses: StephaneBour/actions-php-lint@8.2
-      with:
-        dir: 'C:\Users\LENOVO\Desktop\examen-devops\tests'
-   
+    - name: Lint
+      uses: php-actions/composer@v6
+      with: 
+        command: composer lint/src 
+
