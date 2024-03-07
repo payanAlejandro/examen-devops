@@ -1,28 +1,25 @@
-name: Composer
+name: COMPOSER TEST
 
 on:
   push:
-    branches: [ main, DEV ]
+    branches: [main, DEV]
   pull_request:
-    branches: [ main, DEV ]
+    branches: [main, DEV]
 
 jobs:
   testing:
     runs-on: ubuntu-latest
-
     steps:
-      
-    - name: checkout repo
-    - uses: actions/checkout@v3
+      - name: checkout repo
+        uses: actions/checkout@v3
 
-    - name: setup composer
-    - uses: php-actions/composer@v6
-    with:
-      run: composer install
+      - name: setup compose
+        uses: php-actions/composer@v6
+        with:    
+          run: composer install
 
-    - name: Test
-      run: composer test tests
+      - name: UNIT TEST
+        run: composer test tests
 
-    - name: PHP Syntax Checker (Lint)
-      run: composer lint src
-      
+      - name: run  lint
+        run: composer lint src
