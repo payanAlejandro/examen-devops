@@ -9,8 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      composer: 2.7.1
 
     steps:
     - uses: actions/checkout@v3
@@ -20,9 +18,7 @@ jobs:
     - name: Install dependencies
       uses: php-actions/composer@v6
       with:
-        php_version: "7.4"
-        php_extensions: redis exif
-        version: 2.x        
+        command: composer install 
 
     - name: Test
       uses: php-actions/composer@v6
