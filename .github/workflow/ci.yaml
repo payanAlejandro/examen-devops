@@ -9,24 +9,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     env:
       composer: 2.7.1
-
 
     steps:
     - uses: actions/checkout@v3
     - uses: php-actions/composer@v6
 
-    - name: Set up Composer ${{ env.composer}}
-      uses: php-actions/composer@v64
-      with:
-        composer-version: ${{ env.composer }}
 
     - name: Install dependencies
       uses: php-actions/composer@v6
       with:
-        command: composer install
+        php_version: "7.4"
+        php_extensions: redis exif
+        version: 2.x        
 
     - name: Test
       uses: php-actions/composer@v6
