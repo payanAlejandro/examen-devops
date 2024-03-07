@@ -28,5 +28,5 @@ jobs:
     - name: PHP Syntax Checker (Lint)
       uses: StephaneBour/actions-php-lint@8.2
       with:
-        dir: '../../src'
+        dir: '/src'
    
